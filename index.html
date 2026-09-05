@@ -10,7 +10,7 @@
     <title>BringIt2Life | Ideas. Products. Possibilities.</title>
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link rel="shortcut icon" href="assets/favicon.ico" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=2" />
   </head>
   <body>
     <header class="site-header">
@@ -28,13 +28,23 @@
         </nav>
 
         <div class="nav-actions" aria-label="Quick actions">
-          <button type="button" class="nav-icon-button" data-open-search aria-label="Search the website">
+          <button
+            type="button"
+            class="nav-icon-button"
+            data-open-search
+            aria-label="Search the website"
+          >
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="11" cy="11" r="6.5"></circle>
               <path d="m16 16 5 5"></path>
             </svg>
           </button>
-          <button type="button" class="nav-icon-button" data-open-account aria-label="Open your profile">
+          <button
+            type="button"
+            class="nav-icon-button"
+            data-open-account
+            aria-label="Open your profile"
+          >
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="12" cy="8" r="4"></circle>
               <path d="M4.5 21c.7-4.4 3.2-6.5 7.5-6.5s6.8 2.1 7.5 6.5"></path>
@@ -154,13 +164,21 @@
         <div class="hope-glow hope-glow-two"></div>
         <div class="content-shell hope-layout">
           <div class="hope-book">
-            <div class="book-stage">
+            <button
+              class="book-stage"
+              type="button"
+              data-open-book-preview
+              aria-label="Open a preview of HOPE: Songs of Hope"
+            >
               <img
                 src="assets/hope-front-cover.png"
                 alt="Front cover of HOPE: Songs of Hope by Siphesihle Thotsho"
               />
               <span class="book-shadow"></span>
-            </div>
+              <span class="book-preview-label" aria-hidden="true"
+                >Look inside</span
+              >
+            </button>
             <p class="book-caption">HOPE · Songs of Hope</p>
             <div class="book-actions" aria-label="Book actions">
               <button
@@ -200,7 +218,7 @@
             </p>
             <div class="order-block">
               <span class="order-label">Order now</span>
-              <span class="product-price" data-product-price>R250.00</span>
+              <span class="product-price" data-product-price>R270.00</span>
               <p>Choose how you would like to place your order.</p>
               <div class="order-options">
                 <button type="button" class="order-option" data-order-whatsapp>
@@ -229,84 +247,6 @@
             </div>
           </div>
         </div>
-
-        <div class="content-shell preview-area">
-          <div class="preview-heading">
-            <div>
-              <p class="eyebrow gold">Look inside</p>
-              <h3>Preview the journey</h3>
-            </div>
-            <p>
-              Use the numbered links or your keyboard arrow keys to move through
-              the preview.
-            </p>
-          </div>
-
-          <nav class="preview-nav" aria-label="Book preview pages">
-            <a href="#preview-cover">Cover</a
-            ><a href="#preview-preface">Preface</a><a href="#preview-one">01</a
-            ><a href="#preview-two">02</a><a href="#preview-three">03</a
-            ><a href="#preview-four">04</a><a href="#preview-back">Back</a>
-          </nav>
-
-          <div class="preview-strip" tabindex="0">
-            <article class="preview-page cover-page" id="preview-cover">
-              <img src="assets/hope-front-cover.png" alt="HOPE front cover" />
-            </article>
-            <article class="preview-page text-page" id="preview-preface">
-              <span class="page-kicker">Author’s Preface</span>
-              <p>
-                There are moments in life that shake us to our core—moments that
-                demand we pause, reflect, grieve, and ultimately, grow.
-              </p>
-              <p>
-                <strong>HOPE</strong> was born in one of those seasons. It is
-                not just a collection of words. It is a sacred space where I
-                laid down my fears, hopes, questions, and realisations.
-              </p>
-              <small>Preview · i</small>
-            </article>
-            <article class="preview-page text-page" id="preview-one">
-              <span class="page-kicker">Heart of Hope</span>
-              <p>Where hope begins is often within ourselves.</p>
-              <p>
-                My hope for you is that you find yourself amid the noise in your
-                mind. I hope you find your voice in the rubble.
-              </p>
-              <small>Preview · 01</small>
-            </article>
-            <article class="preview-page text-page dark-page" id="preview-two">
-              <span class="page-kicker">Forest of Possible Dreams</span>
-              <p>Not every wandering is being lost.</p>
-              <p>
-                Some journeys are meant to find you. Never stop searching. Some
-                parts of you are still waiting to be found.
-              </p>
-              <small>Preview · 02</small>
-            </article>
-            <article class="preview-page text-page" id="preview-three">
-              <span class="page-kicker">Stillness</span>
-              <p>Sometimes the loudest answers arrive in silence.</p>
-              <p>
-                Settle your mind. The world will still be here when you return.
-                Quiet down—be still and listen.
-              </p>
-              <small>Preview · 03</small>
-            </article>
-            <article class="preview-page text-page dark-page" id="preview-four">
-              <span class="page-kicker">Transition & Trust</span>
-              <p>Starting over requires hope—hope in the unknown.</p>
-              <p>
-                Hope steadies you. It keeps you rising when things are unclear,
-                when nothing around you makes sense.
-              </p>
-              <small>Preview · 04</small>
-            </article>
-            <article class="preview-page cover-page" id="preview-back">
-              <img src="assets/hope-back-cover.png" alt="HOPE back cover" />
-            </article>
-          </div>
-        </div>
       </section>
 
       <section class="writings section" id="writings">
@@ -323,7 +263,10 @@
           </header>
 
           <div class="article-grid">
-            <article class="article-card featured-article" data-article="begin-again">
+            <article
+              class="article-card featured-article"
+              data-article="begin-again"
+            >
               <span class="article-number">01</span>
               <div>
                 <p class="article-type">Reflection</p>
@@ -332,7 +275,13 @@
                   What if uncertainty is not a dead end, but an invitation to
                   meet the person you are becoming?
                 </p>
-                <button type="button" class="article-read" data-read-article="begin-again">Read more <span>→</span></button>
+                <button
+                  type="button"
+                  class="article-read"
+                  data-read-article="begin-again"
+                >
+                  Read more <span>→</span>
+                </button>
               </div>
             </article>
             <article class="article-card" data-article="showing-up">
@@ -343,7 +292,13 @@
                 <p>
                   Some victories arrive softly—in the decision to try once more.
                 </p>
-                <button type="button" class="article-read" data-read-article="showing-up">Read more <span>→</span></button>
+                <button
+                  type="button"
+                  class="article-read"
+                  data-read-article="showing-up"
+                >
+                  Read more <span>→</span>
+                </button>
               </div>
             </article>
             <article class="article-card" data-article="your-rhythm">
@@ -354,7 +309,13 @@
                 <p>
                   Growth does not rush. It deepens its roots before it blooms.
                 </p>
-                <button type="button" class="article-read" data-read-article="your-rhythm">Read more <span>→</span></button>
+                <button
+                  type="button"
+                  class="article-read"
+                  data-read-article="your-rhythm"
+                >
+                  Read more <span>→</span>
+                </button>
               </div>
             </article>
             <article class="article-card" data-article="coming-soon">
@@ -366,7 +327,13 @@
                   Use this space for a new blog, article, poem or piece of
                   writing.
                 </p>
-                <button type="button" class="article-read" data-read-article="coming-soon">Read more <span>→</span></button>
+                <button
+                  type="button"
+                  class="article-read"
+                  data-read-article="coming-soon"
+                >
+                  Read more <span>→</span>
+                </button>
               </div>
             </article>
           </div>
@@ -379,11 +346,19 @@
             <p class="eyebrow">Let’s talk</p>
             <h2>Have a question?</h2>
             <p>
-              Send us your query directly and we’ll respond by email as soon as possible.
+              Send us your query directly and we’ll respond by email as soon as
+              possible.
             </p>
           </div>
           <form class="query-form" data-query-form>
-            <input class="form-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <input
+              class="form-honeypot"
+              type="text"
+              name="_honey"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
             <div class="form-row">
               <label
                 >Full name<input
@@ -405,13 +380,15 @@
               >Your query<textarea name="message" rows="5" required></textarea>
             </label>
             <button class="button button-primary" type="submit">
-              <span data-submit-label>Send</span> <span aria-hidden="true">→</span>
+              <span data-submit-label>Send</span>
+              <span aria-hidden="true">→</span>
             </button>
-            <p class="form-help" data-query-status aria-live="polite">Your query will be sent securely to info@bringit2life.co.za.</p>
+            <p class="form-help" data-query-status aria-live="polite">
+              Your query will be sent securely to info@bringit2life.co.za.
+            </p>
           </form>
         </div>
       </section>
-
     </main>
 
     <footer class="site-footer" id="contact">
@@ -423,37 +400,59 @@
             inspire and empower.
           </p>
           <div class="social-links" aria-label="Social media links">
-            <button type="button" data-social="facebook" aria-label="Facebook">f</button
-            ><button type="button" data-social="instagram" aria-label="Instagram">◎</button
-            ><button type="button" data-social="tiktok" aria-label="TikTok">♪</button
-            ><button type="button" data-social="youtube" aria-label="YouTube">▶</button
-            ><button type="button" data-social="twitter" aria-label="Twitter">𝕏</button
-            ><button type="button" data-social="whatsapp" aria-label="WhatsApp">◔</button>
+            <button type="button" data-social="facebook" aria-label="Facebook">
+              f</button
+            ><button
+              type="button"
+              data-social="instagram"
+              aria-label="Instagram"
+            >
+              ◎</button
+            ><button type="button" data-social="tiktok" aria-label="TikTok">
+              ♪</button
+            ><button type="button" data-social="youtube" aria-label="YouTube">
+              ▶</button
+            ><button type="button" data-social="twitter" aria-label="Twitter">
+              𝕏</button
+            ><button type="button" data-social="whatsapp" aria-label="WhatsApp">
+              ◔
+            </button>
           </div>
         </div>
         <div>
           <h3>Quick Links</h3>
           <a href="#home">Home</a><a href="#hope">Shop</a
-          ><a href="#categories">Seeds</a><a href="#about">From The Writing Desk</a
+          ><a href="#categories">Seeds</a
+          ><a href="#about">From The Writing Desk</a
           ><a href="#contact">Contact Us</a>
         </div>
         <div>
           <h3>Customer Care</h3>
           <button type="button" data-info="faqs">FAQs</button
-          ><button type="button" data-info="shipping">Shipping &amp; Delivery</button
-          ><button type="button" data-info="returns">Returns &amp; Refunds</button
-          ><button type="button" data-info="terms">Terms &amp; Conditions</button
+          ><button type="button" data-info="shipping">
+            Shipping &amp; Delivery</button
+          ><button type="button" data-info="returns">
+            Returns &amp; Refunds</button
+          ><button type="button" data-info="terms">
+            Terms &amp; Conditions</button
           ><button type="button" data-info="privacy">Privacy Policy</button>
         </div>
         <div>
           <h3>Contact Us</h3>
-          <p>✉ &nbsp;<a href="mailto:info@bringit2life.com">info@bringit2life.com</a></p>
+          <p>
+            ✉ &nbsp;<a href="mailto:info@bringit2life.com"
+              >info@bringit2life.com</a
+            >
+          </p>
           <p>☎ &nbsp;<a href="tel:+27729935504">+27 72 9935 504</a></p>
           <p>⌖ &nbsp;South Africa</p>
         </div>
         <div class="footer-newsletter" id="newsletter">
           <h2>Be the first to know</h2>
-          <p>New books. Exclusive products.<br />Special offers. Straight to your inbox.</p>
+          <p>
+            New books. Exclusive products.<br />Special offers. Straight to your
+            inbox.
+          </p>
           <form class="newsletter-form" data-newsletter-form>
             <label class="sr-only" for="newsletter-email">Email address</label>
             <input
@@ -519,42 +518,273 @@
       </div>
     </aside>
     <div class="site-modal" data-search-modal aria-hidden="true">
-      <button class="modal-backdrop" type="button" data-close-modal aria-label="Close search"></button>
-      <section class="modal-card search-card" role="dialog" aria-modal="true" aria-labelledby="search-title">
-        <button class="modal-close" type="button" data-close-modal aria-label="Close search">×</button>
+      <button
+        class="modal-backdrop"
+        type="button"
+        data-close-modal
+        aria-label="Close search"
+      ></button>
+      <section
+        class="modal-card search-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="search-title"
+      >
+        <button
+          class="modal-close"
+          type="button"
+          data-close-modal
+          aria-label="Close search"
+        >
+          ×
+        </button>
         <p class="eyebrow">Find something</p>
         <h2 id="search-title">Search BringIt2Life</h2>
-        <label class="search-box"><span aria-hidden="true">⌕</span><input type="search" data-search-input placeholder="Try “hope”, “events” or “writing”"></label>
-        <div class="search-results" data-search-results><p>Start typing to search the website.</p></div>
+        <label class="search-box"
+          ><span aria-hidden="true">⌕</span
+          ><input
+            type="search"
+            data-search-input
+            placeholder="Try “hope”, “events” or “writing”"
+        /></label>
+        <div class="search-results" data-search-results>
+          <p>Start typing to search the website.</p>
+        </div>
       </section>
     </div>
 
     <div class="site-modal" data-account-modal aria-hidden="true">
-      <button class="modal-backdrop" type="button" data-close-modal aria-label="Close profile"></button>
-      <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="account-title">
-        <button class="modal-close" type="button" data-close-modal aria-label="Close profile">×</button>
+      <button
+        class="modal-backdrop"
+        type="button"
+        data-close-modal
+        aria-label="Close profile"
+      ></button>
+      <section
+        class="modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="account-title"
+      >
+        <button
+          class="modal-close"
+          type="button"
+          data-close-modal
+          aria-label="Close profile"
+        >
+          ×
+        </button>
         <p class="eyebrow">Your details</p>
         <h2 id="account-title">Local profile</h2>
-        <p class="modal-intro">Save your details on this device so order messages can include them automatically.</p>
+        <p class="modal-intro">
+          Save your details on this device so order messages can include them
+          automatically.
+        </p>
         <form class="profile-form" data-profile-form>
-          <label>Full name<input name="name" type="text" autocomplete="name" required></label>
-          <label>Email address<input name="email" type="email" autocomplete="email" required></label>
-          <label>Phone number<input name="phone" type="tel" autocomplete="tel"></label>
-          <button class="button button-primary" type="submit">Save profile</button>
+          <label
+            >Full name<input
+              name="name"
+              type="text"
+              autocomplete="name"
+              required
+          /></label>
+          <label
+            >Email address<input
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+          /></label>
+          <label
+            >Phone number<input name="phone" type="tel" autocomplete="tel"
+          /></label>
+          <button class="button button-primary" type="submit">
+            Save profile
+          </button>
         </form>
       </section>
     </div>
 
+    <div
+      class="site-modal book-preview-modal"
+      data-book-preview-modal
+      aria-hidden="true"
+    >
+      <button
+        class="modal-backdrop"
+        type="button"
+        data-close-modal
+        aria-label="Close book preview"
+      ></button>
+      <section
+        class="modal-card book-preview-modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="book-preview-title"
+      >
+        <button
+          class="modal-close"
+          type="button"
+          data-close-modal
+          aria-label="Close book preview"
+        >
+          ×
+        </button>
+        <header class="book-preview-header">
+          <div>
+            <p class="eyebrow gold">Look inside</p>
+            <h2 id="book-preview-title">Preview HOPE</h2>
+          </div>
+          <p data-preview-status>Cover · 1 of 7</p>
+        </header>
+
+        <div class="book-preview-viewer">
+          <button
+            class="preview-arrow"
+            type="button"
+            data-preview-previous
+            aria-label="Previous preview page"
+          >
+            ‹
+          </button>
+          <div class="book-preview-pages" aria-live="polite">
+            <article
+              class="preview-page cover-page is-active"
+              data-preview-page
+              data-preview-name="Cover"
+            >
+              <img src="assets/hope-front-cover.png" alt="HOPE front cover" />
+            </article>
+            <article
+              class="preview-page text-page"
+              data-preview-page
+              data-preview-name="Preface"
+            >
+              <span class="page-kicker">Author’s Preface</span>
+              <p>
+                There are moments in life that shake us to our core—moments that
+                demand we pause, reflect, grieve, and ultimately, grow.
+              </p>
+              <p>
+                <strong>HOPE</strong> was born in one of those seasons. It is
+                not just a collection of words. It is a sacred space where I
+                laid down my fears, hopes, questions, and realisations.
+              </p>
+              <small>Preview · i</small>
+            </article>
+            <article
+              class="preview-page text-page"
+              data-preview-page
+              data-preview-name="Page 01"
+            >
+              <span class="page-kicker">Heart of Hope</span>
+              <p>Where hope begins is often within ourselves.</p>
+              <p>
+                My hope for you is that you find yourself amid the noise in your
+                mind. I hope you find your voice in the rubble.
+              </p>
+              <small>Preview · 01</small>
+            </article>
+            <article
+              class="preview-page text-page dark-page"
+              data-preview-page
+              data-preview-name="Page 02"
+            >
+              <span class="page-kicker">Forest of Possible Dreams</span>
+              <p>Not every wandering is being lost.</p>
+              <p>
+                Some journeys are meant to find you. Never stop searching. Some
+                parts of you are still waiting to be found.
+              </p>
+              <small>Preview · 02</small>
+            </article>
+            <article
+              class="preview-page text-page"
+              data-preview-page
+              data-preview-name="Page 03"
+            >
+              <span class="page-kicker">Stillness</span>
+              <p>Sometimes the loudest answers arrive in silence.</p>
+              <p>
+                Settle your mind. The world will still be here when you return.
+                Quiet down—be still and listen.
+              </p>
+              <small>Preview · 03</small>
+            </article>
+            <article
+              class="preview-page text-page dark-page"
+              data-preview-page
+              data-preview-name="Page 04"
+            >
+              <span class="page-kicker">Transition &amp; Trust</span>
+              <p>Starting over requires hope—hope in the unknown.</p>
+              <p>
+                Hope steadies you. It keeps you rising when things are unclear,
+                when nothing around you makes sense.
+              </p>
+              <small>Preview · 04</small>
+            </article>
+            <article
+              class="preview-page cover-page"
+              data-preview-page
+              data-preview-name="Back cover"
+            >
+              <img src="assets/hope-back-cover.png" alt="HOPE back cover" />
+            </article>
+          </div>
+          <button
+            class="preview-arrow"
+            type="button"
+            data-preview-next
+            aria-label="Next preview page"
+          >
+            ›
+          </button>
+        </div>
+
+        <nav class="preview-nav" aria-label="Choose a book preview page">
+          <button type="button" data-preview-index="0">Cover</button>
+          <button type="button" data-preview-index="1">Preface</button>
+          <button type="button" data-preview-index="2">01</button>
+          <button type="button" data-preview-index="3">02</button>
+          <button type="button" data-preview-index="4">03</button>
+          <button type="button" data-preview-index="5">04</button>
+          <button type="button" data-preview-index="6">Back</button>
+        </nav>
+        <p class="preview-help">
+          Use the arrows, numbered buttons or your keyboard’s left and right
+          arrow keys.
+        </p>
+      </section>
+    </div>
+
     <div class="site-modal" data-content-modal aria-hidden="true">
-      <button class="modal-backdrop" type="button" data-close-modal aria-label="Close content"></button>
-      <article class="modal-card content-modal-card" role="dialog" aria-modal="true" aria-labelledby="content-modal-title">
-        <button class="modal-close" type="button" data-close-modal aria-label="Close content">×</button>
+      <button
+        class="modal-backdrop"
+        type="button"
+        data-close-modal
+        aria-label="Close content"
+      ></button>
+      <article
+        class="modal-card content-modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="content-modal-title"
+      >
+        <button
+          class="modal-close"
+          type="button"
+          data-close-modal
+          aria-label="Close content"
+        >
+          ×
+        </button>
         <p class="eyebrow" data-content-type>BringIt2Life</p>
         <h2 id="content-modal-title" data-content-title></h2>
         <div class="content-modal-body" data-content-body></div>
       </article>
     </div>
     <div class="toast" role="status" aria-live="polite" data-toast></div>
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
   </body>
 </html>

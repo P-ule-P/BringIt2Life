@@ -148,7 +148,10 @@ const elements = {
   cartTotal: document.querySelector("[data-cart-total]"),
   likeButton: document.querySelector("[data-like-button]"),
   productPrice: document.querySelector("[data-product-price]"),
-  previewStrip: document.querySelector(".preview-strip"),
+  bookPreviewModal: document.querySelector("[data-book-preview-modal]"),
+  previewPages: [...document.querySelectorAll("[data-preview-page]")],
+  previewNavButtons: [...document.querySelectorAll("[data-preview-index]")],
+  previewStatus: document.querySelector("[data-preview-status]"),
   toast: document.querySelector("[data-toast]"),
   searchModal: document.querySelector("[data-search-modal]"),
   accountModal: document.querySelector("[data-account-modal]"),
@@ -159,6 +162,7 @@ const elements = {
 
 let cart = readJSON(STORAGE_KEYS.cart, []);
 let toastTimer;
+let previewIndex = 0;
 
 function readJSON(key, fallback) {
   try {
@@ -349,29 +353,54 @@ function toggleLike() {
   );
 }
 
-/* Makes the preview pills move only the horizontal book strip. */
+/* Opens the compact book preview and switches one page at a time. */
 function setupPreview() {
-  document.querySelectorAll(".preview-nav a").forEach((link) => {
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-      const page = document.querySelector(link.getAttribute("href"));
-      page?.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "start",
-      });
+  function showPreviewPage(index) {
+    previewIndex =
+      (index + elements.previewPages.length) % elements.previewPages.length;
+
+    elements.previewPages.forEach((page, pageIndex) => {
+      page.classList.toggle("is-active", pageIndex === previewIndex);
     });
+    elements.previewNavButtons.forEach((button, buttonIndex) => {
+      const isActive = buttonIndex === previewIndex;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-current", isActive ? "page" : "false");
+    });
+
+    const activePage = elements.previewPages[previewIndex];
+    elements.previewStatus.textContent = `${activePage.dataset.previewName} · ${previewIndex + 1} of ${elements.previewPages.length}`;
+  }
+
+  document
+    .querySelector("[data-open-book-preview]")
+    .addEventListener("click", () => {
+      showPreviewPage(0);
+      openModal(
+        elements.bookPreviewModal,
+        elements.bookPreviewModal.querySelector("[data-close-modal]"),
+      );
+    });
+
+  document
+    .querySelector("[data-preview-previous]")
+    .addEventListener("click", () => showPreviewPage(previewIndex - 1));
+  document
+    .querySelector("[data-preview-next]")
+    .addEventListener("click", () => showPreviewPage(previewIndex + 1));
+  elements.previewNavButtons.forEach((button) => {
+    button.addEventListener("click", () =>
+      showPreviewPage(Number(button.dataset.previewIndex)),
+    );
   });
 
-  elements.previewStrip.addEventListener("keydown", (event) => {
-    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
-    event.preventDefault();
-    const direction = event.key === "ArrowRight" ? 1 : -1;
-    elements.previewStrip.scrollBy({
-      left: direction * elements.previewStrip.clientWidth * 0.75,
-      behavior: "smooth",
-    });
+  document.addEventListener("keydown", (event) => {
+    if (!elements.bookPreviewModal.classList.contains("open")) return;
+    if (event.key === "ArrowLeft") showPreviewPage(previewIndex - 1);
+    if (event.key === "ArrowRight") showPreviewPage(previewIndex + 1);
   });
+
+  showPreviewPage(0);
 }
 
 async function submitQuery(event) {

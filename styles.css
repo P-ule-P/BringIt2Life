@@ -80,10 +80,14 @@ button { color: inherit; }
 .hope-glow-one { width: 380px; height: 380px; top: 8%; left: -190px; }
 .hope-glow-two { width: 280px; height: 280px; right: -90px; bottom: 18%; }
 .hope-layout { position: relative; display: grid; grid-template-columns: .83fr 1.17fr; gap: clamp(50px, 8vw, 115px); align-items: center; }
-.book-stage { position: relative; width: min(390px, 82%); margin: auto; transform: perspective(1200px) rotateY(7deg); }
+.book-stage { position: relative; width: min(390px, 82%); margin: auto; display: block; padding: 0; background: transparent; border: 0; cursor: pointer; transform: perspective(1200px) rotateY(7deg); transition: transform .25s ease; }
 .book-stage::before { content: ""; position: absolute; z-index: -1; inset: 7px -17px -7px 12px; background: linear-gradient(90deg, #c7bd99, #f8f1d0 35%, #afa482); border-radius: 3px 10px 10px 3px; transform: translateZ(-10px); }
 .book-stage img { position: relative; z-index: 1; width: 100%; box-shadow: -24px 30px 55px rgba(0,0,0,.52); }
+.book-stage:hover { transform: perspective(1200px) rotateY(2deg) translateY(-7px); }
+.book-stage:focus-visible { outline: 3px solid var(--gold); outline-offset: 8px; }
 .book-shadow { position: absolute; z-index: 0; left: 8%; right: -15%; bottom: -34px; height: 38px; background: rgba(0,0,0,.6); filter: blur(17px); }
+.book-preview-label { position: absolute; z-index: 2; left: 50%; bottom: 18px; padding: 9px 16px; color: #17130a; background: rgba(235,190,83,.94); border-radius: 99px; font-size: .72rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; box-shadow: 0 8px 24px rgba(0,0,0,.32); opacity: 0; transform: translate(-50%, 8px); transition: opacity .22s, transform .22s; }
+.book-stage:hover .book-preview-label, .book-stage:focus-visible .book-preview-label { opacity: 1; transform: translate(-50%, 0); }
 .book-caption { margin: 53px 0 0; color: #a49c8c; font-size: .72rem; letter-spacing: .2em; text-align: center; text-transform: uppercase; }
 .book-actions { display: flex; justify-content: center; gap: 10px; margin-top: 18px; }
 .book-action { padding: 10px 15px; color: #d8d4cc; background: #17181a; border: 1px solid #44433e; border-radius: 99px; cursor: pointer; }
@@ -105,16 +109,10 @@ button { color: inherit; }
 .order-option:hover { color: white; border-color: var(--gold); }
 .order-option svg { width: 20px; fill: none; stroke: var(--gold); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .phase-note { display: block; margin-top: 10px; color: #6f6d68; }
-.preview-area { position: relative; margin-top: 80px; padding-top: 52px; border-top: 1px solid #292a2c; }
-.preview-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
-.preview-heading h3 { margin: 0; color: white; font: 600 clamp(1.7rem, 3vw, 2.4rem) "Playfair Display", Georgia, serif; }
-.preview-heading > p { max-width: 380px; margin: 0; color: #888680; font-size: .85rem; }
-.preview-nav { display: flex; gap: 8px; margin: 25px 0 17px; overflow-x: auto; }
-.preview-nav a { min-width: 55px; padding: 8px 13px; color: #c9c4ba; border: 1px solid #3e3e3c; border-radius: 99px; font-size: .74rem; text-align: center; }
-.preview-nav a:hover { color: #0d0e0e; background: var(--gold); border-color: var(--gold); }
-.preview-strip { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 31%); gap: 20px; padding: 4px 5px 28px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-color: var(--gold) #252628; }
-.preview-page { min-height: 390px; scroll-snap-align: start; border-radius: 2px; overflow: hidden; }
-.cover-page img { width: 100%; height: 100%; object-fit: cover; }
+.preview-page { display: none; width: min(440px, 100%); height: min(56vh, 540px); min-height: 330px; border-radius: 3px; overflow: hidden; box-shadow: 0 20px 55px rgba(0,0,0,.35); }
+.preview-page.is-active { display: flex; }
+.cover-page { background: #090a0e; }
+.cover-page img { width: 100%; height: 100%; object-fit: contain; }
 .text-page { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 36px; color: #25251f; background: #f4eddb; box-shadow: inset 0 0 40px rgba(92,72,34,.08); }
 .text-page::after { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(116,91,34,.22); }
 .text-page > * { position: relative; z-index: 1; }
@@ -123,6 +121,7 @@ button { color: inherit; }
 .page-kicker { color: #9d7626; font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .dark-page { color: #eeeae0; background: #17181a; }
 .dark-page::after { border-color: #634f24; }
+.book-preview-pages .preview-page:not(.is-active) { display: none; }
 
 .writings { color: var(--ink); background: #f5f6f0; }
 .writing-heading { margin-bottom: 38px; display: flex; justify-content: space-between; align-items: end; gap: 35px; }
@@ -231,6 +230,19 @@ button { color: inherit; }
 .content-modal-body { margin-top: 22px; color: #50574d; }
 .content-modal-body p { margin: 0 0 15px; }
 .content-modal-body blockquote { margin: 24px 0; padding-left: 18px; color: var(--green-900); border-left: 3px solid var(--green-500); font: italic 1.15rem "Playfair Display", Georgia, serif; }
+.book-preview-modal-card { width: min(920px, 100%); max-height: calc(100vh - 32px); padding: 26px 32px 22px; overflow-y: auto; color: #eeeae1; background: #111216; }
+.book-preview-modal-card .modal-close { color: #f3e8cc; background: #292a2d; }
+.book-preview-header { padding-right: 52px; display: flex; align-items: end; justify-content: space-between; gap: 20px; }
+.book-preview-header h2 { color: white; }
+.book-preview-header > p { margin: 0 0 3px; color: #aaa69d; font-size: .82rem; }
+.book-preview-viewer { margin-top: 20px; display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; gap: 18px; }
+.book-preview-pages { min-width: 0; display: grid; place-items: center; }
+.preview-arrow { width: 46px; height: 46px; display: grid; place-items: center; color: #f5e5bd; background: #232428; border: 1px solid #45433c; border-radius: 50%; font-size: 2rem; line-height: 1; cursor: pointer; }
+.preview-arrow:hover, .preview-arrow:focus-visible { color: #17130a; background: var(--gold); border-color: var(--gold); }
+.preview-nav { margin: 18px 0 0; display: flex; justify-content: center; gap: 8px; overflow-x: auto; }
+.preview-nav button { min-width: 52px; padding: 7px 12px; color: #c9c4ba; background: transparent; border: 1px solid #3e3e3c; border-radius: 99px; font-size: .72rem; cursor: pointer; }
+.preview-nav button:hover, .preview-nav button.is-active { color: #17130a; background: var(--gold); border-color: var(--gold); }
+.preview-help { margin: 11px 0 0; color: #77756f; font-size: .72rem; text-align: center; }
 
 @media (max-width: 1020px) {
   .nav-shell { grid-template-columns: 190px 1fr auto; gap: 18px; }
@@ -257,7 +269,7 @@ button { color: inherit; }
   .hero-image { min-height: 470px; }
   .hope-layout { grid-template-columns: 1fr; }
   .book-stage { width: min(350px, 74vw); }
-  .preview-strip { grid-auto-columns: minmax(250px, 64%); }
+  .book-preview-modal-card { width: min(760px, 100%); }
   .writing-heading { display: block; }
   .writing-heading > p { margin-top: 14px; }
   .article-grid { grid-template-columns: 1fr; }
@@ -276,9 +288,16 @@ button { color: inherit; }
   .trust-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .category-grid { grid-template-columns: repeat(2, 1fr); }
   .category-card { min-height: 225px; padding-inline: 13px; }
-  .preview-heading { display: block; }
-  .preview-heading > p { margin-top: 12px; }
-  .preview-strip { grid-auto-columns: 84%; }
+  .book-preview-modal { padding: 10px; }
+  .book-preview-modal-card { max-height: calc(100vh - 20px); padding: 22px 14px 16px; overflow-y: auto; }
+  .book-preview-header { display: block; padding-right: 45px; }
+  .book-preview-header > p { margin-top: 5px; }
+  .book-preview-viewer { grid-template-columns: 36px minmax(0, 1fr) 36px; gap: 7px; }
+  .preview-arrow { width: 34px; height: 34px; font-size: 1.5rem; }
+  .preview-page { height: min(60vh, 520px); min-height: 350px; }
+  .text-page { padding: 28px 25px; }
+  .text-page p { font-size: .96rem; }
+  .preview-nav { justify-content: start; }
   .article-card { grid-template-columns: 32px 1fr; padding: 25px 21px; }
   .newsletter-form button { padding-inline: 18px; }
   .footer-grid { grid-template-columns: 1fr; gap: 30px; }
