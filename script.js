@@ -15,7 +15,7 @@ const SITE_CONFIG = {
     id: "hope-songs-of-hope",
     title: "HOPE: Songs of Hope",
     author: "Siphesihle Thotsho",
-    price: 250, // Change this number when the selling price changes.
+    price: 270, // Change this number when the selling price changes.
   },
   orderIntro: "Hello BringIt2Life, I would like to order:",
   socialLinks: {
