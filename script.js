@@ -27,11 +27,10 @@ const SITE_CONFIG = {
   },
 };
 
-/* Storage keys keep the cart, like and newsletter state after a refresh. */
+/* Storage keys keep the cart, like and profile state after a refresh. */
 const STORAGE_KEYS = {
   cart: "bringit2life-cart",
   liked: "bringit2life-liked-hope",
-  subscribers: "bringit2life-subscribers",
   profile: "bringit2life-profile",
 };
 
@@ -136,7 +135,7 @@ const CONTENT = {
   privacy: {
     type: "Legal",
     title: "Privacy Policy",
-    body: `<p>This website stores cart, like, profile and demo newsletter details in the visitor’s own browser.</p><p>Before connecting external services, add a complete policy explaining what information is collected, why it is used and how visitors can request deletion.</p>`,
+    body: `<p>This website stores cart, like and profile details in the visitor’s own browser.</p><p>Before connecting external services, add a complete policy explaining what information is collected, why it is used and how visitors can request deletion.</p>`,
   },
 };
 
@@ -467,21 +466,6 @@ async function submitQuery(event) {
   }
 }
 
-/* Newsletter emails are kept on this browser only until a real service is connected. */
-function submitNewsletter(event) {
-  event.preventDefault();
-  const form = event.currentTarget;
-  if (!form.reportValidity()) return;
-
-  const email = new FormData(form).get("email").trim().toLowerCase();
-  const subscribers = readJSON(STORAGE_KEYS.subscribers, []);
-
-  if (!subscribers.includes(email)) subscribers.push(email);
-  saveJSON(STORAGE_KEYS.subscribers, subscribers);
-  form.reset();
-  showToast("Thank you — your email was saved on this device.");
-}
-
 function setupActiveNavigation() {
   const navLinks = [...document.querySelectorAll(".main-nav a")];
   const sections = navLinks
@@ -656,9 +640,6 @@ function initialiseSite() {
   document
     .querySelector("[data-query-form]")
     .addEventListener("submit", submitQuery);
-  document
-    .querySelector("[data-newsletter-form]")
-    .addEventListener("submit", submitNewsletter);
   document
     .querySelector("[data-profile-form]")
     .addEventListener("submit", saveProfile);
