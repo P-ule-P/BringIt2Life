@@ -2,12 +2,12 @@
 
 /*
   ================================================================
-  EDIT THIS CONFIGURATION BLOCK TO CHANGE YOUR BUSINESS DETAILS.
+                          BUSINESS DETAILS.
   ================================================================
 */
 const SITE_CONFIG = {
-  whatsappNumber: "27729935504", // Country code + number, no + or spaces.
-  orderEmail: "info@bringit2life.com",
+  whatsappNumber: "27724945616",
+  orderEmail: "info@bringit2life.co.za",
   queryEmail: "info@bringit2life.co.za",
   currency: "ZAR",
   locale: "en-ZA",
@@ -15,7 +15,7 @@ const SITE_CONFIG = {
     id: "hope-songs-of-hope",
     title: "HOPE: Songs of Hope",
     author: "Siphesihle Thotsho",
-    price: 270, // Change this number when the selling price changes.
+    price: 250,
   },
   orderIntro: "Hello BringIt2Life, I would like to order:",
   socialLinks: {
@@ -27,7 +27,6 @@ const SITE_CONFIG = {
   },
 };
 
-/* Storage keys keep the cart, like and profile state after a refresh. */
 const STORAGE_KEYS = {
   cart: "bringit2life-cart",
   liked: "bringit2life-liked-hope",
@@ -209,7 +208,6 @@ function showToast(message) {
   toastTimer = setTimeout(() => elements.toast.classList.remove("show"), 3200);
 }
 
-/* Adds HOPE once, then increases its quantity on later clicks. */
 function addBookToCart() {
   const existingItem = cart.find((item) => item.id === SITE_CONFIG.product.id);
 
@@ -332,7 +330,6 @@ function orderWithEmail() {
   window.location.href = `mailto:${SITE_CONFIG.orderEmail}?subject=${subject}&body=${body}`;
 }
 
-/* Saves the like choice locally and restores it after a refresh. */
 function setLiked(isLiked) {
   localStorage.setItem(STORAGE_KEYS.liked, String(isLiked));
   elements.likeButton.classList.toggle("liked", isLiked);
@@ -352,7 +349,6 @@ function toggleLike() {
   );
 }
 
-/* Opens the compact book preview and switches one page at a time. */
 function setupPreview() {
   function showPreviewPage(index) {
     previewIndex =

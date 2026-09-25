@@ -265,8 +265,8 @@ button {
   min-height: 610px;
   background-color: transparent;
   background-image: url("assets/landing-page-image.png");
-  background-position: left center;
-  background-size: 100% auto;
+  background-position: right center;
+  background-size: contain;
   background-repeat: no-repeat;
 }
 
